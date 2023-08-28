@@ -43,7 +43,7 @@ const ForgotPassword = () => {
     <Layout title={"forgot password - eccomerce app"}>
       <div className="form-container">
         <h1 className="title">reset password</h1>
-        <form style={{ width: "35rem" }} onSubmit={handleSubmit}>
+        <form className="Auth-form"  onSubmit={handleSubmit}>
           <div>
             <div className="mb-3">
               <input

@@ -145,6 +145,10 @@
 #myCard {
   flex: 0 0 calc(33.33% - 1rem);
 }
+.Auth-form{
+  width: 35rem;
+}
+
 
 @media screen and (max-width: 767px) {
   h3{
@@ -156,6 +160,9 @@
   #myCard {
     flex: 0 0 calc(50% - 1rem); /* Change to 50% width */
     /* Additional styles for smaller screens */
+  }
+  .Auth-form{
+    width: 90%;
   }
   
 }

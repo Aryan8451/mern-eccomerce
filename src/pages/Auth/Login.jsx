@@ -47,7 +47,7 @@ const Login = () => {
     <Layout>
       <div className="form-container">
         <h1 className="title">login form</h1>
-        <form style={{width:"35rem"}} onSubmit={handleSubmit}>
+        <form className="Auth-form"  onSubmit={handleSubmit}>
           <div>
            
             <div className="mb-3">
