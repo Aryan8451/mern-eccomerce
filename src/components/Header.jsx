@@ -25,9 +25,9 @@ const Header = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary ">
-        <div className="container-fluid">
+        <div className="container-fluid justify-content-start">
           <button
-            className="navbar-toggler"
+            className="navbar-toggler m-2"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarTogglerDemo01"
@@ -35,20 +35,22 @@ const Header = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon" />
+            <span className="navbar-toggler-icon " />
           </button>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <Link to="/" className="navbar-brand">
-              <TiShoppingCart
-                style={{
-                  height: "4rem",
-                  width: "3rem",
-                }}
+          <Link to="/" className="navbar-brand">
+              <img src="/images/trencart.jpg"
+              style={{
+                height: "4rem",
+                width: "3rem",
+              }}
               />{" "}
-              eccomerce app
+              TrendCart
             </Link>
+            <SearchInput className="m-4" />
+          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+            
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <SearchInput />
+              
               <li className="nav-item">
                 <NavLink to="/" className="nav-link ">
                   Home

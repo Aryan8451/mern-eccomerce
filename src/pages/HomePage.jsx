@@ -8,6 +8,7 @@ import { Prices } from "../components/Prices";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/cart";
 import { toast } from "react-hot-toast";
+import { FaSpinner } from "react-icons/fa";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -17,7 +18,7 @@ const HomePage = () => {
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [cart,setCart] = useCart()
+  const [cart, setCart] = useCart();
 
   const navigate = useNavigate();
 
@@ -109,20 +110,45 @@ const HomePage = () => {
     <Layout title={"all product -best offer"}>
       <div className="row mt-3">
         <div className="col-md-2">
-          <h4 className="text-center"> filter by category</h4>
-          <div className="d-flex flex-column text-uppercase m-2 ">
-            {categories?.map((c) => (
-              <Checkbox
-                key={c._id}
-                onChange={(e) => handleFilter(e.target.checked, c._id)}
-              >
-                {c.name}
-              </Checkbox>
-            ))}
+          <button
+            className="navbar-toggler m-2 w-100 bg-light"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo01"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <h4 className="text-center"> Filter by category</h4>
+          </button>
+
+          <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <div className="d-flex flex-column text-uppercase m-2 ">
+              {categories?.map((c) => (
+                <Checkbox
+                  key={c._id}
+                  onChange={(e) => handleFilter(e.target.checked, c._id)}
+                >
+                  {c.name}
+                </Checkbox>
+              ))}
+            </div>
           </div>
+
           {/* price filter  */}
-          <h4 className="text-center mt-4"> filter by price</h4>
-          <div className="d-flex flex-column text-uppercase m-2 ">
+          <button
+            className="navbar-toggler m-2 w-100 bg-light"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo01"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+           <h4 className="text-center mt-4"> filter by price</h4> 
+          </button>
+          <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <div className="d-flex flex-column text-uppercase m-2 ">
             {
               <Radio.Group onChange={(e) => setRadio(e.target.value)}>
                 {Prices?.map((p) => (
@@ -133,6 +159,8 @@ const HomePage = () => {
               </Radio.Group>
             }
           </div>
+          </div>
+          
           <div>
             <button
               className="d-flex flex-column text-uppercase m-2 btn btn-danger"
@@ -148,8 +176,8 @@ const HomePage = () => {
           <div className="d-flex flex-wrap">
             {products?.map((p) => (
               <div
-                className="card m-2"
-                style={{ flex: "0 0 calc(33.33% - 1rem)" }}
+                className="card m-2" id="myCard"
+                
                 key={p._id}
               >
                 <img
@@ -173,11 +201,17 @@ const HomePage = () => {
                     >
                       More Details
                     </Button>
-                    <Button onClick={()=>{
-                      setCart([...cart,p])
-                      localStorage.setItem('cart',JSON.stringify([...cart,p]))
-                      toast.success('item added to cart')
-                      }} className="btn btn-secondary ms-1">
+                    <Button
+                      onClick={() => {
+                        setCart([...cart, p]);
+                        localStorage.setItem(
+                          "cart",
+                          JSON.stringify([...cart, p])
+                        );
+                        toast.success("item added to cart");
+                      }}
+                      className="btn btn-secondary ms-1"
+                    >
                       Add to Cart
                     </Button>
                   </div>
